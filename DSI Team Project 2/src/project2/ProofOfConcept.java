@@ -1,5 +1,7 @@
 package project2;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 public class ProofOfConcept {
@@ -165,16 +167,21 @@ public class ProofOfConcept {
 	
 	//Main Method
 	public static void main(String[] args) throws Exception {
+		InfixParser test = new InfixParser();
+		FileInputStream inputFile = new FileInputStream("input.txt");
+		
 		String infix = "( 3 + 4 ) || 1";
 		infixSolver(infix);
 		
-		infix = "( 2 > 3 ) - 2";
+		infix = "2 >= 2";
 		infixSolver(infix);
 		
 		infix = "5 ^ 2 % 7 * ( 4 - 4 )";
 		infixSolver(infix);
 		
-		infix = "3/(6*5-30)"; // Division by zero test case
+		infix = "3 / ( 6 * 5 - 30 )"; // Division by zero test case
 		infixSolver(infix);
+		
+		infixSolver(test.readExpression(inputFile));
 	}
 }
